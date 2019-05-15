@@ -1,0 +1,85 @@
+<div>
+  <br />
+  <h3>Manage Event</h3>
+  <!--<form #eventsForm="ngForm" (ngSubmit)="onSubmit(eventsForm.value)">-->
+    <!-- TODO: Build add form here -->
+      <div class="form-group">
+        <b><label for="name">Event Name</label></b>
+        <b><input type="text" #nameRef=ngModel minlength="3" maxlength="24" class="form-control" name="name" [(ngModel)]="name" value={event.name} required ></b>
+        <div *ngIf="nameRef.errors && (nameRef.dirty||nameRef.touched)" class="alert alert-danger">
+          <div [hidden]="!nameRef.errors.required">
+              Please Enter Name
+          </div>
+          <div [hidden]="!nameRef.errors.minlength">
+              Enter atleast 3 characters
+          </div>
+          <div [hidden]="!nameRef.errors.maxlength">
+              Please do not exceed 24 characters
+          </div>
+        </div>
+      
+      </div>
+
+      <div class="form-group">
+       <b> <label for="type">Type</label></b>
+            <select type="text" class="form-control" name="type" [(ngModel)]="type" id="type" value={event.type}>
+              <option>Concert</option>
+              <option>Diwali</option>
+              <option>Holi</option>
+              <option>Celebration</option>
+            </select>
+      
+      </div>
+
+      <div class="form-group">
+        <b><label for="length">Length (Mins)</label></b>
+    <b><input type="number" #lengthRef class="form-control" pattern="^[1-9][0-9]{5}$" name="length" [(ngModel)]="length" id="length" value={event.length} required></b>
+        <div *ngIf="lengthRef.errors && (lengthRef.dirty||lengthRef.touched)" class="alert alert-danger">
+          <div [hidden]="!lengthRef.errors.required">
+              Please Enter Length
+          </div>
+          <div [hidden]="!lengthRef.errors.pattern">
+              Please Enter number
+          </div>
+        </div>
+        
+      </div>
+
+      <button type="submit" class="btn btn-success" style="color: #fff;" (click)="updateEvents()">Update</button>
+        <!--</form>-->
+</div> 
+
+
+
+
+
+<!--<div>
+    <br />
+    <h3>Manage Event</h3>
+    <form [formGroup]="eventsForm">
+    
+    <div class="form-group">
+        <b><label for="name">Event Name</label></b>
+        <b><input type="text" class="form-control" id="name" value = {event.name} required></b>
+      </div>
+ 
+      <div class="form-group">
+       <b> <label for="type">Type</label></b>
+            <select type="text" class="form-control" id="type" value = {event.value}>
+              <option>Concert</option>
+              <option>Diwali</option>
+              <option>Holi</option>
+              <option>Celebration</option>
+            </select>
+      
+      </div>
+
+      <div class="form-group">
+        <b><label for="length">Length (Mins)</label></b>
+        <b><input type="text" class="form-control" id="length" value = {event.length}></b>
+      </div>
+ 
+      <button type="submit" class="btn btn-success" style="color: #fff;">Save</button>
+    </form>
+  </div>-->
+    

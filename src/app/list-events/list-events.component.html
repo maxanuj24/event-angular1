@@ -1,0 +1,37 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+    <br />
+    <h3>Events</h3>
+    <br>
+    <b><label>Search Event :   </label></b><input type="text" [(ngModel)]="searchText" placeholder="Search">
+    <br>
+    <br>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Event Name</th>
+          <th>Type</th>
+          <th>Length (Mins)</th>
+          <th>Views</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events | searchbyname: searchText">
+          <td>{{event._id.substr(0, 8)}}</td>
+          <td>
+            <a routerLink="/update-event/{{event._id}}">{{event.name}}</a>
+          </td>
+          <!-- TODO: Build table data here -->
+          <td>{{event.type}}</td>
+          <td>{{event.length}}</td>
+          <td>{{event.views}}</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" >
+      <a routerLink="/add-events" style="color: #fff;">Add Event</a>
+    </button>
+  </div>
